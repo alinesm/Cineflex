@@ -2,11 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import Sections from "./Sections";
 
-function ChooseSectionPage() {
+function ChooseSectionPage({
+  setWeekdayFooter,
+  setHourFooter,
+  sections,
+  setSectionDate,
+}) {
   return (
     <ChooseSectionStyle>
       <p>Selecione o horário</p>
-      <Sections />
+      <Sections
+        setWeekdayFooter={setWeekdayFooter}
+        setHourFooter={setHourFooter}
+        sections={sections}
+        setSectionDate={setSectionDate}
+      />
     </ChooseSectionStyle>
   );
 }

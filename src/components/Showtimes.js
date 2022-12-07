@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-function Showtimes({ time }) {
+function Showtimes({
+  time,
+  weekday,
+  date,
+  setWeekdayFooter,
+  setHourFooter,
+  setSectionDate,
+}) {
   function timeClicked() {
-    alert("clicked");
+    setHourFooter(time);
+    setWeekdayFooter(weekday);
+    setSectionDate(date);
   }
   return (
     <ButtonsStyle onClick={timeClicked}>

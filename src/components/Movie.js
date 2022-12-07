@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function Movie({ movieImage, id }) {
-  function MovieClicked(id) {
-    console.log(id);
-  }
-
+function Movie({ movieImage, id, MovieClicked }) {
   return (
     <MovieContainerStyle onClick={() => MovieClicked(id)}>
       <ImageStyle>

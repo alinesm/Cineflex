@@ -60,24 +60,16 @@ import axios from "axios";
 //   },
 // ];
 
-function Movies() {
-  const [listMovies, setListMovies] = useState(null);
-
-  useEffect(() => {
-    const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
-    const promise = axios.get(URL);
-    promise.then((res) => setListMovies(res.data));
-    promise.catch((err) => console.log(err.response.data));
-  }, []);
-
-  if (listMovies === null) {
-    return <div>Carregando...</div>;
-  }
-
+function Movies({ listMovies, MovieClicked }) {
   return (
     <MoviesContainerStyle>
       {listMovies.map((m) => (
-        <Movie key={m.id} movieImage={m.posterURL} id={m.id} />
+        <Movie
+          key={m.id}
+          movieImage={m.posterURL}
+          id={m.id}
+          MovieClicked={MovieClicked}
+        />
       ))}
     </MoviesContainerStyle>
   );

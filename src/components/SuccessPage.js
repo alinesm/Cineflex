@@ -1,11 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-function SuccessPage({ typedName, typedCPF }) {
+function SuccessPage({
+  typedName,
+  typedCPF,
+  sectionDate,
+  hourFooter,
+  movieTitle,
+}) {
   return (
     <SucessContainerStyle>
       <MessageStyle>Pedido feito com sucesso!</MessageStyle>
       <HeaderTitle>Filme e sessão</HeaderTitle>
+      <Info>{movieTitle}</Info>
+      <Info>
+        {sectionDate} {hourFooter}
+      </Info>
       <HeaderTitle>Ingressos</HeaderTitle>
       <HeaderTitle>Comprador</HeaderTitle>
       <Info>{typedName}</Info>

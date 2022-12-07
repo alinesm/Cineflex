@@ -1,7 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-function SeatsPage({ nome, setNome, cpf, setCPF, handleForm }) {
+function SeatsPage({
+  nome,
+  setNome,
+  cpf,
+  setCPF,
+  handleForm,
+  hourFooter,
+  weekdayFooter,
+  movieTitle,
+  movieImage,
+}) {
   let array = [];
   for (let i = 1; i <= 50; i++) {
     array.push(i);
@@ -47,7 +57,17 @@ function SeatsPage({ nome, setNome, cpf, setCPF, handleForm }) {
         </form>
       </InputsContainerStyle>
 
-      <ChoosedMovieStyle />
+      <ChoosedMovieStyle>
+        <ImageBorderStyle2>
+          <img src={movieImage} alt="" />
+        </ImageBorderStyle2>
+        <InfoMovie>
+          <p>{movieTitle}</p>
+          <p>
+            {weekdayFooter} - {hourFooter}
+          </p>
+        </InfoMovie>
+      </ChoosedMovieStyle>
     </SeatsContainerStyle>
   );
 }
@@ -194,15 +214,34 @@ const ChoosedMovieStyle = styled.div`
   background: #dfe6ed;
   border: 1px solid #9eadba;
   padding: 12px 10px 0 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  color: #293845;
+`;
+
+const ImageBorderStyle2 = styled.div`
+  width: 64px;
+  height: 89px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  img {
+    width: 48px;
+    height: 72px;
+  }
+`;
+
+const InfoMovie = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
   p {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    color: #293845;
-    padding-bottom: 20px;
-    margin-left: 10px;
+    text-align: left;
   }
 `;

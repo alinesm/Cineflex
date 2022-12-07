@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Movies from "./Movies";
 
-function Home() {
+function Home({ listMovies, MovieClicked }) {
   return (
     <MoviesStyle>
       <p>Selecione o filme</p>
-      <Movies />
+      <Movies listMovies={listMovies} MovieClicked={MovieClicked} />
     </MoviesStyle>
   );
 }

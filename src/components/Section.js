@@ -2,7 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Showtimes from "./Showtimes";
 
-function Section({ weekday, date, showtimes }) {
+function Section({
+  weekday,
+  date,
+  showtimes,
+  setWeekdayFooter,
+  setHourFooter,
+  setSectionDate,
+}) {
   return (
     <SectionContainerStyle>
       <p>
@@ -10,7 +17,14 @@ function Section({ weekday, date, showtimes }) {
       </p>
       <TimeStyle>
         {showtimes.map((time) => (
-          <Showtimes time={time.name} />
+          <Showtimes
+            time={time.name}
+            weekday={weekday}
+            date={date}
+            setWeekdayFooter={setWeekdayFooter}
+            setHourFooter={setHourFooter}
+            setSectionDate={setSectionDate}
+          />
         ))}
       </TimeStyle>
     </SectionContainerStyle>
