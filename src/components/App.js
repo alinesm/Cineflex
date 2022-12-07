@@ -4,27 +4,56 @@ import SuccessPage from "./SuccessPage";
 import Movies from "./Movies";
 import SeatsPage from "./SeatsPage";
 import ChooseSectionPage from "./ChooseSectionPage";
+// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./Home";
 
 function App() {
   const [nome, setNome] = useState("");
   const [cpf, setCPF] = useState("");
+  const [typedName, setTypedName] = useState("");
+  const [typedCPF, setTypeCPF] = useState("");
+
+  function handleForm(e) {
+    e.preventDefault();
+    setTypedName(nome);
+    setTypeCPF(cpf);
+  }
 
   return (
-    <>
+    // <Router>
+    <MasterContainerStyle>
       <HeaderStyle>CINEFLEX</HeaderStyle>
-      {/* <MoviesStyle>
-        <p>Selecione o filme</p>
-        <Movies />
-      </MoviesStyle> */}
 
+      {/* <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes> */}
+
+      {/* <Home /> */}
       {/* <ChooseSectionPage /> */}
-      <SeatsPage nome={nome} setNome={setNome} cpf={cpf} setCPF={setCPF} />
-      <SuccessPage nome={nome} cpf={cpf} />
-    </>
+      <SeatsPage
+        nome={nome}
+        setNome={setNome}
+        cpf={cpf}
+        setCPF={setCPF}
+        handleForm={handleForm}
+      />
+      <SuccessPage
+        nome={nome}
+        cpf={cpf}
+        typedName={typedName}
+        typedCPF={typedCPF}
+      />
+    </MasterContainerStyle>
+    // </Router>
   );
 }
 
 export default App;
+
+const MasterContainerStyle = styled.div`
+  width: 375px;
+  margin: auto;
+`;
 
 const HeaderStyle = styled.div`
   background: #c3cfd9;
@@ -42,24 +71,4 @@ const HeaderStyle = styled.div`
   text-align: center;
   justify-content: center;
   color: #e8833a;
-`;
-
-const MoviesStyle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  p {
-    margin: 40px 0;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.04em;
-    color: #293845;
-  }
 `;

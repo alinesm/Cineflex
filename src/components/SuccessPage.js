@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-function SuccessPage({ nome, cpf }) {
+function SuccessPage({ typedName, typedCPF }) {
   return (
     <SucessContainerStyle>
       <MessageStyle>Pedido feito com sucesso!</MessageStyle>
-      <p>Filme e sessão</p>
-      <p>Ingressos</p>
-      <p>Comprador</p>
-      {nome}
-      {cpf}
+      <HeaderTitle>Filme e sessão</HeaderTitle>
+      <HeaderTitle>Ingressos</HeaderTitle>
+      <HeaderTitle>Comprador</HeaderTitle>
+      <Info>{typedName}</Info>
+      <Info>{typedCPF}</Info>
       <ButtonReserveStyle>Voltar pra Home</ButtonReserveStyle>
     </SucessContainerStyle>
   );
@@ -31,20 +31,33 @@ const MessageStyle = styled.div`
   color: #247a6b;
 `;
 
-const SucessContainerStyle = styled.div`
-  p {
-    margin-top: 30px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.04em;
-    color: #293845;
-  }
+const HeaderTitle = styled.p`
+  margin-top: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: #293845;
 `;
+
+const Info = styled.p`
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #293845;
+`;
+
+const SucessContainerStyle = styled.div``;
 
 const ButtonReserveStyle = styled.div`
   margin-top: 20px;

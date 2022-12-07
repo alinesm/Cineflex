@@ -1,11 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 
-function SeatsPage({ nome, setNome, cpf, setCPF }) {
-  // const [nome, setNome] = useState("");
-  // const [cpf, setCPF] = useState("");
-
+function SeatsPage({ nome, setNome, cpf, setCPF, handleForm }) {
   let array = [];
   for (let i = 1; i <= 50; i++) {
     array.push(i);
@@ -31,21 +27,26 @@ function SeatsPage({ nome, setNome, cpf, setCPF }) {
 
       <InputsContainerStyle>
         <p>Nome do comprador</p>
-        <input
-          onChange={(e) => setNome(e.target.value)}
-          value={nome}
-          type="text"
-          placeholder="Digite seu nome..."
-        />
-        <p> CPF do comprador</p>
-        <input
-          onChange={(e) => setCPF(e.target.value)}
-          value={cpf}
-          type="number"
-          placeholder="Digite seu CPF..."
-        />
+        <form>
+          <input
+            onChange={(e) => setNome(e.target.value)}
+            value={nome}
+            type="text"
+            placeholder="Digite seu nome..."
+          />
+          <p> CPF do comprador</p>
+          <input
+            onChange={(e) => setCPF(e.target.value)}
+            value={cpf}
+            type="number"
+            placeholder="Digite seu CPF..."
+          />
+          <ButtonReserveStyle onClick={handleForm}>
+            Reservar assento(s)
+          </ButtonReserveStyle>
+        </form>
       </InputsContainerStyle>
-      <ButtonReserveStyle>Reservar assento(s)</ButtonReserveStyle>
+
       <ChoosedMovieStyle />
     </SeatsContainerStyle>
   );
