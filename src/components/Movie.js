@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function Movie({ movieImage, id, MovieClicked }) {
   return (
-    <MovieContainerStyle onClick={() => MovieClicked(id)}>
-      <ImageStyle>
-        <img src={movieImage} alt="" />
-      </ImageStyle>
-    </MovieContainerStyle>
+    <Link to={`/cineflex/movies/${id}/showtimes`}>
+      <MovieContainerStyle onClick={() => MovieClicked(id)}>
+        <ImageStyle>
+          <img src={movieImage} alt="" />
+        </ImageStyle>
+      </MovieContainerStyle>
+    </Link>
   );
 }
 

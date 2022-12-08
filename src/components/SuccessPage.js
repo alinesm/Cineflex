@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function SuccessPage({
   typedName,
@@ -20,7 +21,9 @@ function SuccessPage({
       <HeaderTitle>Comprador</HeaderTitle>
       <Info>{typedName}</Info>
       <Info>{typedCPF}</Info>
-      <ButtonReserveStyle>Voltar pra Home</ButtonReserveStyle>
+      <Link to="/">
+        <ButtonReserveStyle>Voltar pra Home</ButtonReserveStyle>
+      </Link>
     </SucessContainerStyle>
   );
 }

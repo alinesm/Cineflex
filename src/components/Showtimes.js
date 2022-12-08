@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function Showtimes({
   time,
@@ -8,15 +9,23 @@ function Showtimes({
   setWeekdayFooter,
   setHourFooter,
   setSectionDate,
+  id,
 }) {
   function timeClicked() {
     setHourFooter(time);
     setWeekdayFooter(weekday);
     setSectionDate(date);
+    console.log(id);
+    console.log(time);
+    console.log(weekday);
+    console.log(date);
   }
+
   return (
     <ButtonsStyle onClick={timeClicked}>
-      <button>{time}</button>
+      <Link to={`/seats/${id}`}>
+        <button>{time}</button>
+      </Link>
     </ButtonsStyle>
   );
 }

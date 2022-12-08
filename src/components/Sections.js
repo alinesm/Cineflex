@@ -11,7 +11,7 @@ function Sections({
   return (
     <>
       <SectionsContainerStyle>
-        {sections[0].days.map((s, i) => (
+        {sections.days.map((s, i) => (
           <Section
             weekday={s.weekday}
             date={s.date}
@@ -24,11 +24,9 @@ function Sections({
       </SectionsContainerStyle>
       <ChoosedMovieStyle>
         <ImageBorderStyle>
-          <img src={sections[0].posterURL} alt="" />
+          <img src={sections.posterURL} alt="" />
         </ImageBorderStyle>
-        {/* <InfoMovie> */}
-        <p>{sections[0].title} </p>
-        {/* </InfoMovie> */}
+        <p>{sections.title} </p>
       </ChoosedMovieStyle>
     </>
   );

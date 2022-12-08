@@ -9,6 +9,7 @@ function Section({
   setWeekdayFooter,
   setHourFooter,
   setSectionDate,
+  // id,
 }) {
   return (
     <SectionContainerStyle>
@@ -18,6 +19,7 @@ function Section({
       <TimeStyle>
         {showtimes.map((time) => (
           <Showtimes
+            id={time.id}
             time={time.name}
             weekday={weekday}
             date={date}

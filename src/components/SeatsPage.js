@@ -1,5 +1,9 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Seats from "./Seats";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SeatsPage({
   nome,
@@ -11,19 +15,58 @@ function SeatsPage({
   weekdayFooter,
   movieTitle,
   movieImage,
+  seatsData,
+  seats,
+  setSeats,
 }) {
-  let array = [];
-  for (let i = 1; i <= 50; i++) {
-    array.push(i);
+  const [seatsSelected, setSeatsSelected] = useState([]);
+  const [selectedSeat, setSelectedSeat] = useState(false);
+  const [colorSeat, setColorSeat] = useState("#c3cfd9");
+
+  const { sectionId } = useParams();
+
+  useEffect(() => {
+    const URL = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sectionId}/seats`;
+    const promise = axios.get(URL);
+    promise.then((res) => setSeats(res.data));
+    promise.catch((err) => console.log(err.response.data));
+  }, []);
+
+  if (seats === undefined) {
+    return;
+  }
+
+  // console.log(
+  //   "seats",
+  //   seats.seats.map((seat) => seat.name)
+  // );
+
+  function handleSeat(seat) {
+    let arraySeats = [...seatsSelected, seat.id];
+    setSeatsSelected(arraySeats);
+
+    console.log(arraySeats);
+    console.log(seat.isAvailable);
+
+    if (seat.isAvailable) {
+      console.log(seat.id);
+      setColorSeat("#1aae9e");
+    }
   }
   return (
     <SeatsContainerStyle>
       <p>Selecione o(s) assento(s)</p>
-      {array.map((i) => (
-        <SeatsStyle>
-          <button>{i}</button>
-        </SeatsStyle>
+
+      {seats.seats.map((seat) => (
+        <Seats
+          key={seat.id}
+          seat={seat}
+          handleSeat={handleSeat}
+          colorSeat={colorSeat}
+          selectedSeat={selectedSeat}
+        />
       ))}
+
       <ButtonsLegendStyle>
         <button />
         <button />
@@ -51,18 +94,21 @@ function SeatsPage({
             type="number"
             placeholder="Digite seu CPF..."
           />
+
           <ButtonReserveStyle onClick={handleForm}>
-            Reservar assento(s)
+            <Link to="/success">
+              <button> Reservar assento(s)</button>
+            </Link>
           </ButtonReserveStyle>
         </form>
       </InputsContainerStyle>
 
       <ChoosedMovieStyle>
         <ImageBorderStyle2>
-          <img src={movieImage} alt="" />
+          <img src={seats.movie.posterURL} alt="" />
         </ImageBorderStyle2>
         <InfoMovie>
-          <p>{movieTitle}</p>
+          <p>{seats.movie.title}</p>
           <p>
             {weekdayFooter} - {hourFooter}
           </p>
@@ -95,22 +141,54 @@ const SeatsContainerStyle = styled.div`
   }
 `;
 
-const SeatsStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  button {
-    width: 26px;
-    height: 26px;
-    margin-top: 5px;
-    background: #c3cfd9;
-    border: 1px solid #808f9d;
-    border-radius: 12px;
-  }
-`;
+// const ButtonSeatStyleDisponivel = styled.button`
+//   cursor: pointer;
+//   width: 26px;
+//   height: 26px;
+//   margin-top: 5px;
+//   background: ${(props) => props.colorSeat};
+//   border: 1px solid
+//     ${(props) => (props.colorSeat === "#1aae9e" ? "#0e7d71" : "#7b8b99")};
+//   border-radius: 12px;
+// `;
+
+// const ButtonSeatStyleIndisponivel = styled.button`
+//   cursor: pointer;
+//   width: 26px;
+//   height: 26px;
+//   margin-top: 5px;
+//   background: #fbe192;
+//   border: 1px solid #f7c52b;
+//   border-radius: 12px;
+// `;
+
+// const PerguntaFechadaStyled = styled.div`
+//   cursor: ${(props) => props.perguntaStyle === "#333333" && "pointer"};
+//   pointer-events: ${(props) =>
+//     props.perguntaStyle === "#333333" ? "all" : "none"};
+//   width: 300px;
+//   height: 35px;
+//   background-color: #ffffff;
+//   margin: 12px;
+//   padding: 15px;
+//   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+//   border-radius: 5px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   p {
+//     font-family: "Recursive";
+//     font-style: normal;
+//     font-weight: 900;
+//     font-size: 16px;
+//     line-height: 19px;
+//     color: ${(props) => props.perguntaStyle};
+//     text-decoration: ${(props) =>
+//       props.perguntaStyle !== "#333333" ? "line-through" : "none"};
+//   }
+// `;
 
 const ButtonsLegendStyle = styled.div`
-  /* margin: auto; */
   margin-top: 15px;
   button {
     margin-left: 40px;
