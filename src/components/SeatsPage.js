@@ -17,6 +17,8 @@ function SeatsPage({
   setSeats,
   seatsSelected,
   setSeatsSelected,
+  seatsName,
+  setSeatsName,
 }) {
   const { sectionId } = useParams();
 
@@ -32,12 +34,21 @@ function SeatsPage({
   }
 
   function handleSeat(seat) {
-    if (seatsSelected.includes(seat.name)) {
-      const filteredSeats = seatsSelected.filter((s) => s !== seat.name);
+    if (seatsSelected.includes(seat.id)) {
+      const filteredSeats = seatsSelected.filter((s) => s !== seat.id);
       setSeatsSelected([...filteredSeats]);
     } else {
-      setSeatsSelected([...seatsSelected, seat.name]);
+      setSeatsSelected([...seatsSelected, seat.id]);
     }
+
+    if (seatsName.includes(seat.name)) {
+      const filteredSeats = seatsName.filter((s) => s !== seat.name);
+      setSeatsName([...filteredSeats]);
+    } else {
+      setSeatsName([...seatsName, seat.name]);
+    }
+
+    console.log(seatsName);
   }
   return (
     <SeatsContainerStyle>

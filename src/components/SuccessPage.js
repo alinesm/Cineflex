@@ -8,9 +8,8 @@ function SuccessPage({
   sectionDate,
   hourFooter,
   movieTitle,
-  seatsSelected,
-  setSeatsSelected,
-  listSeatsSuccess,
+  seatsName,
+  listNames,
 }) {
   return (
     <SucessContainerStyle>
@@ -21,7 +20,8 @@ function SuccessPage({
         {sectionDate} {hourFooter}
       </Info>
       <HeaderTitle>Ingressos</HeaderTitle>
-      {listSeatsSuccess.map((s) => (
+      {/* {seatsName.map((s) => ( */}
+      {listNames?.map((s) => (
         <SeatsStyle>Assento {s}</SeatsStyle>
       ))}
       <HeaderTitle>Comprador</HeaderTitle>

@@ -16,23 +16,26 @@ function App() {
   const [weekdayFooter, setWeekdayFooter] = useState("");
   const [sectionDate, setSectionDate] = useState("");
   const [movieTitle, setMovieTitle] = useState("");
-  const [seatsSelected, setSeatsSelected] = useState([]);
 
   const [sections, setSections] = useState(undefined);
   const [seats, setSeats] = useState(undefined);
   const [listMovies, setListMovies] = useState(undefined);
 
-  const [listSeatsSuccess, setListSeatsSuccess] = useState([]);
+  const [seatsSelected, setSeatsSelected] = useState([]);
+  const [seatsName, setSeatsName] = useState([]);
+  const [listNames, setListNames] = useState([]);
 
   function handleForm(e) {
     e.preventDefault();
     setTypedName(nome);
     setTypeCPF(cpf);
 
-    const convertSeatsNumber = seatsSelected.map((s) => Number(s));
-    setListSeatsSuccess(convertSeatsNumber);
+    const listSeatsIdsSuccess = [...seatsSelected];
 
-    const sendData = { ids: convertSeatsNumber, name: nome, cpf: cpf };
+    const names = [...seatsName];
+    setListNames(names);
+
+    const sendData = { ids: listSeatsIdsSuccess, name: nome, cpf: cpf };
     const url_post =
       "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
     const promise = axios.post(url_post, sendData);
@@ -44,6 +47,7 @@ function App() {
     setNome("");
     setCPF("");
     setSeatsSelected([]);
+    setSeatsName([]);
   }
 
   return (
@@ -90,6 +94,8 @@ function App() {
                 setSeats={setSeats}
                 seatsSelected={seatsSelected}
                 setSeatsSelected={setSeatsSelected}
+                seatsName={seatsName}
+                setSeatsName={setSeatsName}
               />
             }
           />
@@ -97,15 +103,14 @@ function App() {
             path="/success"
             element={
               <SuccessPage
-                nome={nome}
-                cpf={cpf}
                 typedName={typedName}
                 typedCPF={typedCPF}
                 movieTitle={movieTitle}
                 hourFooter={hourFooter}
                 sectionDate={sectionDate}
-                seatsSelected={seatsSelected}
-                listSeatsSuccess={listSeatsSuccess}
+                seatsName={seatsName}
+                // listSeatsSuccess={listSeatsSuccess}
+                listNames={listNames}
               />
             }
           />
@@ -119,7 +124,10 @@ export default App;
 
 const MasterContainerStyle = styled.div`
   width: 375px;
+  height: 100%;
+  min-height: 100vh;
   margin: auto;
+  background-color: white;
 `;
 
 const HeaderStyle = styled.div`
