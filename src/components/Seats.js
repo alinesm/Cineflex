@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-function Seats({ seat, handleSeat, colorSeat, seatsSelected }) {
+function Seats({ seat, handleSeat, seatsSelected }) {
+  const [colorSeat, setColorSeat] = useState("#c3cfd9");
+
   return (
     <>
       {seat.isAvailable ? (

@@ -15,10 +15,6 @@ function Showtimes({
     setHourFooter(time);
     setWeekdayFooter(weekday);
     setSectionDate(date);
-    console.log(idTime);
-    console.log(time);
-    console.log(weekday);
-    console.log(date);
   }
 
   return (

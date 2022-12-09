@@ -5,6 +5,7 @@ import SeatsPage from "./SeatsPage";
 import ChooseSectionPage from "./ChooseSectionPage";
 import Home from "./Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
 
 function App() {
   const [nome, setNome] = useState("");
@@ -15,17 +16,34 @@ function App() {
   const [weekdayFooter, setWeekdayFooter] = useState("");
   const [sectionDate, setSectionDate] = useState("");
   const [movieTitle, setMovieTitle] = useState("");
+  const [seatsSelected, setSeatsSelected] = useState([]);
 
   const [sections, setSections] = useState(undefined);
   const [seats, setSeats] = useState(undefined);
   const [listMovies, setListMovies] = useState(undefined);
 
+  const [listSeatsSuccess, setListSeatsSuccess] = useState([]);
+
   function handleForm(e) {
     e.preventDefault();
     setTypedName(nome);
     setTypeCPF(cpf);
+
+    const convertSeatsNumber = seatsSelected.map((s) => Number(s));
+    setListSeatsSuccess(convertSeatsNumber);
+
+    const sendData = { ids: convertSeatsNumber, name: nome, cpf: cpf };
+    const url_post =
+      "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
+    const promise = axios.post(url_post, sendData);
+    promise.then((res) => {
+      console.log(res.data);
+    });
+    promise.catch((err) => console.log(err.response.data));
+
     setNome("");
     setCPF("");
+    setSeatsSelected([]);
   }
 
   return (
@@ -38,7 +56,6 @@ function App() {
             path="/"
             element={
               <Home
-                // MovieClicked={MovieClicked}
                 setMovieTitle={setMovieTitle}
                 listMovies={listMovies}
                 setListMovies={setListMovies}
@@ -71,6 +88,8 @@ function App() {
                 seatsData={seats}
                 seats={seats}
                 setSeats={setSeats}
+                seatsSelected={seatsSelected}
+                setSeatsSelected={setSeatsSelected}
               />
             }
           />
@@ -85,6 +104,8 @@ function App() {
                 movieTitle={movieTitle}
                 hourFooter={hourFooter}
                 sectionDate={sectionDate}
+                seatsSelected={seatsSelected}
+                listSeatsSuccess={listSeatsSuccess}
               />
             }
           />

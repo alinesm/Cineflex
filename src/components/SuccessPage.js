@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,9 @@ function SuccessPage({
   sectionDate,
   hourFooter,
   movieTitle,
+  seatsSelected,
+  setSeatsSelected,
+  listSeatsSuccess,
 }) {
   return (
     <SucessContainerStyle>
@@ -18,6 +21,9 @@ function SuccessPage({
         {sectionDate} {hourFooter}
       </Info>
       <HeaderTitle>Ingressos</HeaderTitle>
+      {listSeatsSuccess.map((s) => (
+        <SeatsStyle>Assento {s}</SeatsStyle>
+      ))}
       <HeaderTitle>Comprador</HeaderTitle>
       <Info>{typedName}</Info>
       <Info>{typedCPF}</Info>
@@ -30,8 +36,21 @@ function SuccessPage({
 
 export default SuccessPage;
 
+const SeatsStyle = styled.p`
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #293845;
+`;
+
 const MessageStyle = styled.div`
-  width: 150px;
+  width: 170px;
   padding-top: 20px;
   font-family: "Roboto";
   font-style: normal;
