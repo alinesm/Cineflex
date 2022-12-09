@@ -9,13 +9,13 @@ function Showtimes({
   setWeekdayFooter,
   setHourFooter,
   setSectionDate,
-  id,
+  idTime,
 }) {
   function timeClicked() {
     setHourFooter(time);
     setWeekdayFooter(weekday);
     setSectionDate(date);
-    console.log(id);
+    console.log(idTime);
     console.log(time);
     console.log(weekday);
     console.log(date);
@@ -23,7 +23,7 @@ function Showtimes({
 
   return (
     <ButtonsStyle onClick={timeClicked}>
-      <Link to={`/seats/${id}`}>
+      <Link to={`/seats/${idTime}`}>
         <button>{time}</button>
       </Link>
     </ButtonsStyle>

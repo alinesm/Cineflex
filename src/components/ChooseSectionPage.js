@@ -12,7 +12,6 @@ function ChooseSectionPage({
   setSections,
 }) {
   const { movieId } = useParams();
-  // const [sections, setSections] = useState(undefined);
 
   useEffect(() => {
     const promise = axios.get(
@@ -26,7 +25,7 @@ function ChooseSectionPage({
     return;
   }
 
-  console.log(sections.days.map((day) => day.id));
+  // console.log(sections);
 
   return (
     <ChooseSectionStyle>

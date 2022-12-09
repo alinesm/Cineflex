@@ -13,17 +13,15 @@ function SeatsPage({
   handleForm,
   hourFooter,
   weekdayFooter,
-  movieTitle,
-  movieImage,
-  seatsData,
   seats,
   setSeats,
 }) {
   const [seatsSelected, setSeatsSelected] = useState([]);
-  const [selectedSeat, setSelectedSeat] = useState(false);
   const [colorSeat, setColorSeat] = useState("#c3cfd9");
 
   const { sectionId } = useParams();
+
+  console.log("SeatsSelected: ", seatsSelected);
 
   useEffect(() => {
     const URL = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sectionId}/seats`;
@@ -42,16 +40,13 @@ function SeatsPage({
   // );
 
   function handleSeat(seat) {
-    let arraySeats = [...seatsSelected, seat.id];
-    setSeatsSelected(arraySeats);
-
-    console.log(arraySeats);
-    console.log(seat.isAvailable);
-
-    if (seat.isAvailable) {
-      console.log(seat.id);
-      setColorSeat("#1aae9e");
+    if (seatsSelected.includes(seat.name)) {
+      const filteredSeats = seatsSelected.filter((s) => s !== seat.name);
+      setSeatsSelected([...filteredSeats]);
+    } else {
+      setSeatsSelected([...seatsSelected, seat.name]);
     }
+    // console.log(seatsSelected);
   }
   return (
     <SeatsContainerStyle>
@@ -63,7 +58,7 @@ function SeatsPage({
           seat={seat}
           handleSeat={handleSeat}
           colorSeat={colorSeat}
-          selectedSeat={selectedSeat}
+          seatsSelected={seatsSelected}
         />
       ))}
 

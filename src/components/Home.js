@@ -1,18 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Movies from "./Movies";
 import { Link } from "react-router-dom";
 
-function Home({
-  MovieClicked,
-  sections,
-  setSections,
-  listMovies,
-  setListMovies,
-}) {
-  // const [listMovies, setListMovies] = useState(null);
-
+function Home({ listMovies, setListMovies, setMovieTitle }) {
   useEffect(() => {
     const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
     const promise = axios.get(URL);
@@ -23,14 +14,18 @@ function Home({
   if (listMovies === undefined) {
     return <div>Carregando...</div>;
   }
-  console.log(listMovies);
+  // console.log(listMovies);
+
+  function MovieClicked(title) {
+    setMovieTitle(title);
+  }
   return (
     <MoviesStyle>
       <p>Selecione o filme</p>
       <MoviesContainerStyle>
         {listMovies.map((m) => (
           <Link to={`/sections/${m.id}`}>
-            <ImageStyle>
+            <ImageStyle onClick={() => MovieClicked(m.title)}>
               <img src={m.posterURL} alt="" />
             </ImageStyle>
           </Link>

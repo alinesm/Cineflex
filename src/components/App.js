@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import SuccessPage from "./SuccessPage";
-import Movies from "./Movies";
 import SeatsPage from "./SeatsPage";
 import ChooseSectionPage from "./ChooseSectionPage";
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
-import axios from "axios";
-// import { sections } from "../mockData";
-import { seats } from "../mockData";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,6 +14,7 @@ function App() {
   const [hourFooter, setHourFooter] = useState("");
   const [weekdayFooter, setWeekdayFooter] = useState("");
   const [sectionDate, setSectionDate] = useState("");
+  const [movieTitle, setMovieTitle] = useState("");
 
   const [sections, setSections] = useState(undefined);
   const [seats, setSeats] = useState(undefined);
@@ -28,10 +24,8 @@ function App() {
     e.preventDefault();
     setTypedName(nome);
     setTypeCPF(cpf);
-  }
-
-  function MovieClicked(id) {
-    console.log(id);
+    setNome("");
+    setCPF("");
   }
 
   return (
@@ -44,7 +38,8 @@ function App() {
             path="/"
             element={
               <Home
-                MovieClicked={MovieClicked}
+                // MovieClicked={MovieClicked}
+                setMovieTitle={setMovieTitle}
                 listMovies={listMovies}
                 setListMovies={setListMovies}
               />
@@ -87,7 +82,7 @@ function App() {
                 cpf={cpf}
                 typedName={typedName}
                 typedCPF={typedCPF}
-                // movieTitle={sections.title}
+                movieTitle={movieTitle}
                 hourFooter={hourFooter}
                 sectionDate={sectionDate}
               />

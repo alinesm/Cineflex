@@ -19,7 +19,7 @@ function Section({
       <TimeStyle>
         {showtimes.map((time) => (
           <Showtimes
-            id={time.id}
+            idTime={time.id}
             time={time.name}
             weekday={weekday}
             date={date}
