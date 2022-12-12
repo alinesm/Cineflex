@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Seats from "./Seats";
+import Seats from "../components/Seats";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -124,13 +124,11 @@ const SeatsContainerStyle = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  background-color: lightpink;
 `;
 
 const ParagraphyStyle = styled.p`
   /* margin: 20px 0; */
   margin: 30px 0 20px 0;
-  background-color: yellow;
   width: 100%;
   font-family: "Roboto";
   font-style: normal;
@@ -183,7 +181,6 @@ const SpansContainer = styled.div`
 `;
 
 const InputsContainerStyle = styled.div`
-  /* margin-left: -18px; */
   margin-top: 20px;
   p {
     margin: 0 0px 3px 0;
@@ -202,8 +199,10 @@ const InputsContainerStyle = styled.div`
     background: #ffffff;
     border: 1px solid #d5d5d5;
     border-radius: 3px;
+    padding-left: 10px;
+    font-family: "Roboto";
+    font-size: 18px;
     &::placeholder {
-      padding-left: 10px;
       font-family: "Roboto";
       font-style: italic;
       font-weight: 400;
@@ -251,16 +250,17 @@ const ChoosedMovieStyle = styled.div`
   margin-top: 20px;
   background: #dfe6ed;
   border: 1px solid #9eadba;
-  padding: 12px 10px 0 10px;
+  padding: 12px 0px 12px 10px;
+
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 26px;
+  font-size: 22px;
   color: #293845;
 `;
 
 const ImageBorderStyle2 = styled.div`
-  width: 64px;
+  width: 70px;
   height: 89px;
   display: flex;
   align-items: center;
@@ -269,7 +269,7 @@ const ImageBorderStyle2 = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   img {
-    width: 48px;
+    width: 50px;
     height: 72px;
   }
 `;
@@ -277,8 +277,7 @@ const ImageBorderStyle2 = styled.div`
 const InfoMovie = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px;
-
+  margin: auto 0 auto 10px;
   p {
     text-align: left;
   }

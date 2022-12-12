@@ -30,6 +30,10 @@ function Seats({ seat, handleSeat, seatsSelected }) {
 export default Seats;
 
 const ButtonSeatStyleDisponivel = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   cursor: pointer;
   width: 26px;
   height: 26px;
@@ -41,6 +45,10 @@ const ButtonSeatStyleDisponivel = styled.button`
 `;
 
 const ButtonSeatStyleIndisponivel = styled.button`
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 26px;
   height: 26px;
   margin-top: 5px;

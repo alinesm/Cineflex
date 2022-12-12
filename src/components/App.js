@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import SuccessPage from "./SuccessPage";
-import SeatsPage from "./SeatsPage";
-import ChooseSectionPage from "./ChooseSectionPage";
-import Home from "./Home";
+import SuccessPage from "../pages/SuccessPage";
+import SeatsPage from "../pages/SeatsPage";
+import ChooseSectionPage from "../pages/ChooseSectionPage";
+import Home from "../pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -125,7 +125,7 @@ const MasterContainerStyle = styled.div`
   width: 375px;
   height: 100%;
   min-height: 100vh;
-  /* margin: auto; */
+  margin: auto;
   background-color: white;
 `;
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -8,33 +8,36 @@ function SuccessPage({
   sectionDate,
   hourFooter,
   movieTitle,
-  seatsName,
   listNames,
 }) {
   return (
     <SucessContainerStyle>
       <MessageStyle>Pedido feito com sucesso!</MessageStyle>
-      <ContainerMovieInfo data-test="movie-info">
-        <HeaderTitle>Filme e sessão</HeaderTitle>
-        <Info>{movieTitle}</Info>
-        <Info>
-          {sectionDate} {hourFooter}
-        </Info>
-      </ContainerMovieInfo>
-      <ContainerTicketsInfo data-test="seats-info">
-        <HeaderTitle>Ingressos</HeaderTitle>
-        {listNames?.map((s) => (
-          <SeatsStyle>Assento {s}</SeatsStyle>
-        ))}
-      </ContainerTicketsInfo>
-      <ContainerBuyerInfo data-test="client-info">
-        <HeaderTitle>Comprador</HeaderTitle>
-        <Info>{typedName}</Info>
-        <Info>{typedCPF}</Info>
-      </ContainerBuyerInfo>
+      <ContainerInfos>
+        <ContainerMovieInfo data-test="movie-info">
+          <HeaderTitle>Filme e sessão</HeaderTitle>
+          <Info>{movieTitle}</Info>
+          <Info>
+            {sectionDate} {hourFooter}
+          </Info>
+        </ContainerMovieInfo>
+        <ContainerTicketsInfo data-test="seats-info">
+          <HeaderTitle>Ingressos</HeaderTitle>
+          {listNames?.map((s) => (
+            <SeatsStyle>Assento {s}</SeatsStyle>
+          ))}
+        </ContainerTicketsInfo>
+        <ContainerBuyerInfo data-test="client-info">
+          <HeaderTitle>Comprador</HeaderTitle>
+          <Info>{typedName}</Info>
+          <Info>{typedCPF}</Info>
+        </ContainerBuyerInfo>
+      </ContainerInfos>
 
       <Link to="/" data-test="go-home-btn">
-        <ButtonReserveStyle>Voltar pra Home</ButtonReserveStyle>
+        <ButtonReservePosition>
+          <ButtonReserveStyle>Voltar pra Home</ButtonReserveStyle>
+        </ButtonReservePosition>
       </Link>
     </SucessContainerStyle>
   );
@@ -42,11 +45,21 @@ function SuccessPage({
 
 export default SuccessPage;
 
+const ButtonReservePosition = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const ContainerMovieInfo = styled.div``;
 
 const ContainerTicketsInfo = styled.div``;
 
 const ContainerBuyerInfo = styled.div``;
+
+const ContainerInfos = styled.div`
+  margin-left: 10px;
+`;
 
 const SeatsStyle = styled.p`
   font-family: "Roboto";
@@ -57,7 +70,6 @@ const SeatsStyle = styled.p`
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
-
   color: #293845;
 `;
 
@@ -97,7 +109,6 @@ const Info = styled.p`
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
-
   color: #293845;
 `;
 
