@@ -100,7 +100,7 @@ function App() {
             }
           />
           <Route
-            path="/success"
+            path="/sucesso"
             element={
               <SuccessPage
                 typedName={typedName}

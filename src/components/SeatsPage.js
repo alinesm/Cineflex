@@ -94,7 +94,7 @@ function SeatsPage({
           />
 
           <ButtonReserveStyle onClick={handleForm}>
-            <Link to="/success" data-test="book-seat-btn">
+            <Link to="/sucesso" data-test="book-seat-btn">
               <button> Reservar assento(s)</button>
             </Link>
           </ButtonReserveStyle>

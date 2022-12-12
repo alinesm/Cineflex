@@ -15,7 +15,11 @@ function Seats({ seat, handleSeat, seatsSelected }) {
           {seat.name}
         </ButtonSeatStyleDisponivel>
       ) : (
-        <ButtonSeatStyleIndisponivel data-test="seat" colorSeat={colorSeat}>
+        <ButtonSeatStyleIndisponivel
+          data-test="seat"
+          onClick={() => alert("Esse assento não está disponível")}
+          colorSeat={colorSeat}
+        >
           {seat.name}
         </ButtonSeatStyleIndisponivel>
       )}
