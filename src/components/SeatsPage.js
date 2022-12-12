@@ -93,8 +93,8 @@ function SeatsPage({
             placeholder="Digite seu CPF..."
           />
 
-          <ButtonReserveStyle data-test="book-seat-btn" onClick={handleForm}>
-            <Link to="/success">
+          <ButtonReserveStyle onClick={handleForm}>
+            <Link to="/success" data-test="book-seat-btn">
               <button> Reservar assento(s)</button>
             </Link>
           </ButtonReserveStyle>
