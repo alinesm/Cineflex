@@ -19,7 +19,7 @@ function Showtimes({
 
   return (
     <ButtonsStyle onClick={timeClicked}>
-      <Link data-test="showtime" to={`/seats/${idTime}`}>
+      <Link data-test="showtime" to={`/assentos/${idTime}`}>
         <button>{time}</button>
       </Link>
     </ButtonsStyle>

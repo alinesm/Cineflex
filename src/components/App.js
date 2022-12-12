@@ -67,7 +67,7 @@ function App() {
             }
           />
           <Route
-            path="/sections/:movieId"
+            path="/sessoes/:movieId"
             element={
               <ChooseSectionPage
                 setWeekdayFooter={setWeekdayFooter}
@@ -79,7 +79,7 @@ function App() {
             }
           />
           <Route
-            path="/seats/:sectionId"
+            path="/assentos/:sectionId"
             element={
               <SeatsPage
                 nome={nome}

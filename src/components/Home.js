@@ -24,7 +24,7 @@ function Home({ listMovies, setListMovies, setMovieTitle }) {
       <p>Selecione o filme</p>
       <MoviesContainerStyle>
         {listMovies.map((m) => (
-          <Link data-test="movie" to={`/sections/${m.id}`}>
+          <Link data-test="movie" to={`/sessoes/${m.id}`}>
             <ImageStyle onClick={() => MovieClicked(m.title)}>
               <img src={m.posterURL} alt="" />
             </ImageStyle>
