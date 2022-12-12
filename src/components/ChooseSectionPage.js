@@ -44,7 +44,7 @@ function ChooseSectionPage({
           />
         ))}
       </SectionsContainerStyle>
-      <ChoosedMovieStyle>
+      <ChoosedMovieStyle data-test="footer">
         <ImageBorderStyle>
           <img src={sections.posterURL} alt="" />
         </ImageBorderStyle>
@@ -57,11 +57,14 @@ function ChooseSectionPage({
 export default ChooseSectionPage;
 
 const ChooseSectionStyle = styled.div`
+  background-color: purple;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   p {
+    margin-top: 30px;
+    background-color: blue;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -75,7 +78,15 @@ const ChooseSectionStyle = styled.div`
   }
 `;
 
-const SectionsContainerStyle = styled.div``;
+const SectionsContainerStyle = styled.div`
+  background-color: green;
+  /* padding: 0 20px; */
+  left: 0;
+  p {
+    margin: 20px 0 10px 0;
+    background-color: yellow;
+  }
+`;
 
 const ChoosedMovieStyle = styled.div`
   box-sizing: border-box;
@@ -92,12 +103,13 @@ const ChoosedMovieStyle = styled.div`
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
-    font-size: 26px;
+    font-size: 23px;
     display: flex;
-    align-items: center;
+    text-align: left;
     color: #293845;
     padding-bottom: 20px;
     margin-left: 10px;
+    justify-content: center;
   }
 `;
 
@@ -105,13 +117,13 @@ const ImageBorderStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
+  width: 70px;
   height: 89px;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   img {
-    width: 48px;
+    width: 50px;
     height: 72px;
   }
 `;

@@ -14,20 +14,26 @@ function SuccessPage({
   return (
     <SucessContainerStyle>
       <MessageStyle>Pedido feito com sucesso!</MessageStyle>
-      <HeaderTitle>Filme e sessão</HeaderTitle>
-      <Info>{movieTitle}</Info>
-      <Info>
-        {sectionDate} {hourFooter}
-      </Info>
-      <HeaderTitle>Ingressos</HeaderTitle>
-      {/* {seatsName.map((s) => ( */}
-      {listNames?.map((s) => (
-        <SeatsStyle>Assento {s}</SeatsStyle>
-      ))}
-      <HeaderTitle>Comprador</HeaderTitle>
-      <Info>{typedName}</Info>
-      <Info>{typedCPF}</Info>
-      <Link to="/">
+      <ContainerMovieInfo data-test="movie-info">
+        <HeaderTitle>Filme e sessão</HeaderTitle>
+        <Info>{movieTitle}</Info>
+        <Info>
+          {sectionDate} {hourFooter}
+        </Info>
+      </ContainerMovieInfo>
+      <ContainerTicketsInfo data-test="seats-info">
+        <HeaderTitle>Ingressos</HeaderTitle>
+        {listNames?.map((s) => (
+          <SeatsStyle>Assento {s}</SeatsStyle>
+        ))}
+      </ContainerTicketsInfo>
+      <ContainerBuyerInfo data-test="client-info">
+        <HeaderTitle>Comprador</HeaderTitle>
+        <Info>{typedName}</Info>
+        <Info>{typedCPF}</Info>
+      </ContainerBuyerInfo>
+
+      <Link to="/" data-test="go-home-btn">
         <ButtonReserveStyle>Voltar pra Home</ButtonReserveStyle>
       </Link>
     </SucessContainerStyle>
@@ -35,6 +41,12 @@ function SuccessPage({
 }
 
 export default SuccessPage;
+
+const ContainerMovieInfo = styled.div``;
+
+const ContainerTicketsInfo = styled.div``;
+
+const ContainerBuyerInfo = styled.div``;
 
 const SeatsStyle = styled.p`
   font-family: "Roboto";

@@ -52,7 +52,7 @@ function SeatsPage({
   }
   return (
     <SeatsContainerStyle>
-      <p>Selecione o(s) assento(s)</p>
+      <ParagraphyStyle>Selecione o(s) assento(s)</ParagraphyStyle>
 
       {seats.seats.map((seat) => (
         <Seats
@@ -78,6 +78,7 @@ function SeatsPage({
         <p>Nome do comprador</p>
         <form>
           <input
+            data-test="client-name"
             onChange={(e) => setNome(e.target.value)}
             value={nome}
             type="text"
@@ -85,13 +86,14 @@ function SeatsPage({
           />
           <p> CPF do comprador</p>
           <input
+            data-test="client-cpf"
             onChange={(e) => setCPF(e.target.value)}
             value={cpf}
             type="number"
             placeholder="Digite seu CPF..."
           />
 
-          <ButtonReserveStyle onClick={handleForm}>
+          <ButtonReserveStyle data-test="book-seat-btn" onClick={handleForm}>
             <Link to="/success">
               <button> Reservar assento(s)</button>
             </Link>
@@ -99,7 +101,7 @@ function SeatsPage({
         </form>
       </InputsContainerStyle>
 
-      <ChoosedMovieStyle>
+      <ChoosedMovieStyle data-test="footer">
         <ImageBorderStyle2>
           <img src={seats.movie.posterURL} alt="" />
         </ImageBorderStyle2>
@@ -122,67 +124,23 @@ const SeatsContainerStyle = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  p {
-    /* margin: 20px 0; */
-    width: 100%;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
-    text-align: center;
-    letter-spacing: 0.04em;
-
-    color: #293845;
-  }
+  background-color: lightpink;
 `;
 
-// const ButtonSeatStyleDisponivel = styled.button`
-//   cursor: pointer;
-//   width: 26px;
-//   height: 26px;
-//   margin-top: 5px;
-//   background: ${(props) => props.colorSeat};
-//   border: 1px solid
-//     ${(props) => (props.colorSeat === "#1aae9e" ? "#0e7d71" : "#7b8b99")};
-//   border-radius: 12px;
-// `;
-
-// const ButtonSeatStyleIndisponivel = styled.button`
-//   cursor: pointer;
-//   width: 26px;
-//   height: 26px;
-//   margin-top: 5px;
-//   background: #fbe192;
-//   border: 1px solid #f7c52b;
-//   border-radius: 12px;
-// `;
-
-// const PerguntaFechadaStyled = styled.div`
-//   cursor: ${(props) => props.perguntaStyle === "#333333" && "pointer"};
-//   pointer-events: ${(props) =>
-//     props.perguntaStyle === "#333333" ? "all" : "none"};
-//   width: 300px;
-//   height: 35px;
-//   background-color: #ffffff;
-//   margin: 12px;
-//   padding: 15px;
-//   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-//   border-radius: 5px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   p {
-//     font-family: "Recursive";
-//     font-style: normal;
-//     font-weight: 900;
-//     font-size: 16px;
-//     line-height: 19px;
-//     color: ${(props) => props.perguntaStyle};
-//     text-decoration: ${(props) =>
-//       props.perguntaStyle !== "#333333" ? "line-through" : "none"};
-//   }
-// `;
+const ParagraphyStyle = styled.p`
+  /* margin: 20px 0; */
+  margin: 30px 0 20px 0;
+  background-color: yellow;
+  width: 100%;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #293845;
+`;
 
 const ButtonsLegendStyle = styled.div`
   margin-top: 15px;
@@ -194,12 +152,12 @@ const ButtonsLegendStyle = styled.div`
     &:nth-child(1) {
       background: #1aae9e;
       border: 1px solid #0e7d71;
-      margin-right: 30px;
+      margin-right: 37px;
     }
     &:nth-child(2) {
       background: #c3cfd9;
       border: 1px solid #7b8b99;
-      margin-right: 30px;
+      margin-right: 43px;
     }
     &:nth-child(3) {
       background: #fbe192;
@@ -225,9 +183,21 @@ const SpansContainer = styled.div`
 `;
 
 const InputsContainerStyle = styled.div`
+  /* margin-left: -18px; */
+  margin-top: 20px;
+  p {
+    margin: 0 0px 3px 0;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #293845;
+  }
   input {
-    width: 327px;
-    margin-top: 5px;
+    width: 347px;
+    margin-bottom: 10px;
     height: 51px;
     background: #ffffff;
     border: 1px solid #d5d5d5;
@@ -241,11 +211,21 @@ const InputsContainerStyle = styled.div`
       line-height: 21px;
       display: flex;
       align-items: center;
-
       color: #afafaf;
     }
   }
-  p {
+`;
+
+const ButtonReserveStyle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    margin-top: 20px;
+    width: 225px;
+    height: 42px;
+    background: #e8833a;
+    border-radius: 3px;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -253,28 +233,12 @@ const InputsContainerStyle = styled.div`
     line-height: 21px;
     display: flex;
     align-items: center;
-    color: #293845;
-    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    border: none;
   }
-`;
-
-const ButtonReserveStyle = styled.div`
-  margin-top: 20px;
-  width: 225px;
-  height: 42px;
-  background: #e8833a;
-  border-radius: 3px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: #ffffff;
 `;
 
 const ChoosedMovieStyle = styled.div`

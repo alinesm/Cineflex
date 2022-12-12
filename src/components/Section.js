@@ -9,10 +9,9 @@ function Section({
   setWeekdayFooter,
   setHourFooter,
   setSectionDate,
-  // id,
 }) {
   return (
-    <SectionContainerStyle>
+    <SectionContainerStyle data-test="movie-day">
       <p>
         {weekday} - {date}{" "}
       </p>

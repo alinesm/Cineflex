@@ -8,13 +8,14 @@ function Seats({ seat, handleSeat, seatsSelected }) {
     <>
       {seat.isAvailable ? (
         <ButtonSeatStyleDisponivel
+          data-test="seat"
           colorSeat={seatsSelected.includes(seat.id)}
           onClick={() => handleSeat(seat)}
         >
           {seat.name}
         </ButtonSeatStyleDisponivel>
       ) : (
-        <ButtonSeatStyleIndisponivel colorSeat={colorSeat}>
+        <ButtonSeatStyleIndisponivel data-test="seat" colorSeat={colorSeat}>
           {seat.name}
         </ButtonSeatStyleIndisponivel>
       )}

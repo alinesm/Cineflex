@@ -109,7 +109,6 @@ function App() {
                 hourFooter={hourFooter}
                 sectionDate={sectionDate}
                 seatsName={seatsName}
-                // listSeatsSuccess={listSeatsSuccess}
                 listNames={listNames}
               />
             }
@@ -126,7 +125,7 @@ const MasterContainerStyle = styled.div`
   width: 375px;
   height: 100%;
   min-height: 100vh;
-  margin: auto;
+  /* margin: auto; */
   background-color: white;
 `;
 

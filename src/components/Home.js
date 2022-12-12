@@ -25,7 +25,7 @@ function Home({ listMovies, setListMovies, setMovieTitle }) {
       <MoviesContainerStyle>
         {listMovies.map((m) => (
           <Link to={`/sections/${m.id}`}>
-            <ImageStyle onClick={() => MovieClicked(m.title)}>
+            <ImageStyle data-test="movie" onClick={() => MovieClicked(m.title)}>
               <img src={m.posterURL} alt="" />
             </ImageStyle>
           </Link>
@@ -52,7 +52,7 @@ const MoviesStyle = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   p {
-    margin: 40px 0;
+    margin: 30px 0 10px 0;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
